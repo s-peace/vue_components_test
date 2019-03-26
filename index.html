@@ -10,14 +10,21 @@
 </head>
 
 <body>
-  <div id="fruits-list">
-    <fruits-list-title></fruits-list-title>
-    <fruits-list-title></fruits-list-title>
-    <fruits-list-title></fruits-list-title>
-    <fruits-list-description></fruits-list-description>
-    <fruits-list-table></fruits-list-table>
+  <div id="main">
+    <fruits-list></fruits-list>
   </div>
   <script>
+    Vue.component('fruits-list',{
+      template: 
+      `
+      <div>
+        <p><fruits-list-title></fruits-list-title></p>
+        <p><fruits-list-description></fruits-list-description></p>
+        <p><fruits-list-table></fruits-list-table></p>
+      </div>
+      
+      `
+    })
     Vue.component('fruits-list-title',{
       template:'<h1>fruits list</h1>'
     })
@@ -51,7 +58,7 @@
       `
     })
     new Vue({
-      el: "#fruits-list",
+      el: "#main",
     })
   </script>
   <!-- <script src="app.js"></script> -->
