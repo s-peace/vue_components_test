@@ -10,53 +10,61 @@
 </head>
 
 <body>
-  <div id="main">
-    <fruits-list></fruits-list>
+  <div id="fruits-list">
+    <fruits-list-title></fruits-list-title>
   </div>
   <script>
-    Vue.component('fruits-list',{
-      template: 
-      `
-      <div>
-        <p><fruits-list-title></fruits-list-title></p>
-        <p><fruits-list-description></fruits-list-description></p>
-        <p><fruits-list-table></fruits-list-table></p>
-      </div>
+    new Vue({
+      el:"#fruits-list",
+      components: {
+        'fruits-list-title':{
+          template: '<h1>fruits-list2</h1>'
+        }
+      }
+    })
+    // Vue.component('fruits-list',{
+    //   template: 
+    //   `
+    //   <div>
+    //     <p><fruits-list-title></fruits-list-title></p>
+    //     <p><fruits-list-description></fruits-list-description></p>
+    //     <p><fruits-list-table></fruits-list-table></p>
+    //   </div>
       
-      `
-    })
-    Vue.component('fruits-list-title',{
-      template:'<h1>fruits list</h1>'
-    })
-    Vue.component('fruits-list-description',{
-      template:'<p>list of major fruits list</p>'
-    })
-    Vue.component('fruits-list-table',{
-      template: `
-      <table>
-        <tr>
-          <th>season</th>
-          <th>fruits</th>
-        </tr>
-        <tr>
-          <td>spring</td>
-          <td>strawberry</td>
-        </tr>
-        <tr>
-          <td>summer</td>
-          <td>waterMelon</td>
-        </tr>
-        <tr>
-          <td>autumn</td>
-          <td>grape</td>
-        </tr>
-        <tr>
-          <td>winter</td>
-          <td>orange</td>
-        </tr>
-      </table>
-      `
-    })
+    //   `
+    // })
+    // Vue.component('fruits-list-title',{
+    //   template:'<h1>fruits list</h1>'
+    // })
+    // Vue.component('fruits-list-description',{
+    //   template:'<p>list of major fruits list</p>'
+    // })
+    // Vue.component('fruits-list-table',{
+    //   template: `
+    //   <table>
+    //     <tr>
+    //       <th>season</th>
+    //       <th>fruits</th>
+    //     </tr>
+    //     <tr>
+    //       <td>spring</td>
+    //       <td>strawberry</td>
+    //     </tr>
+    //     <tr>
+    //       <td>summer</td>
+    //       <td>waterMelon</td>
+    //     </tr>
+    //     <tr>
+    //       <td>autumn</td>
+    //       <td>grape</td>
+    //     </tr>
+    //     <tr>
+    //       <td>winter</td>
+    //       <td>orange</td>
+    //     </tr>
+    //   </table>
+    //   `
+    // })
     new Vue({
       el: "#main",
     })
