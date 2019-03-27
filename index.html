@@ -10,18 +10,33 @@
 </head>
 
 <body>
-  <div id="fruits-list">
-    <fruits-list-title></fruits-list-title>
+  <div id="app">
+    <item-desc v-bind:item-name="myItem"></item-desc>
   </div>
+  <!-- <div id="fruits-list">
+    <fruits-list-title></fruits-list-title>
+  </div> -->
   <script>
-    new Vue({
-      el:"#fruits-list",
-      components: {
-        'fruits-list-title':{
-          template: '<h1>fruits-list2</h1>'
+    Vue.component('item-desc',{
+      props:{
+        itemName: {
+          type:String
         }
-      }
+      },
+      template: '<p>{{itemName}} is item name</p>'
     })
+    new Vue({
+      el: '#app',
+      data: {myItem: 'pen'}
+    })
+    // new Vue({
+    //   el:"#fruits-list",
+    //   components: {
+    //     'fruits-list-title':{
+    //       template: '<h1>fruits-list2</h1>'
+    //     }
+    //   }
+    // })
     // Vue.component('fruits-list',{
     //   template: 
     //   `
