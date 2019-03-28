@@ -10,81 +10,49 @@
 </head>
 
 <body>
-  <div id="app">
-    <item-desc v-bind:item-name="myItem"></item-desc>
+  <div id="fruits-counter">
+    <div v-for="fruit in fruits">
+      {{fruit.name}}
+      <counter-button v-on:increment="incrementCartStatus()">
+      </counter-button>
+    </div>
+    <p>sum: {{total}}</p>
   </div>
-  <!-- <div id="fruits-list">
-    <fruits-list-title></fruits-list-title>
-  </div> -->
   <script>
-    Vue.component('item-desc',{
-      props:{
-        itemName: {
-          type:String
+    let counterButton = Vue.extend({
+      template: `<span>{{counter}} ko 
+          <button v-on:click="addToCart">add</button></span>`,
+      data:function(){
+        return {
+          counter: 0
         }
       },
-      template: '<p>{{itemName}} is item name</p>'
+      methods: {
+        addToCart: function(){
+          this.counter += 1;
+          this.$emit('increment')
+        }
+      },
     })
     new Vue({
-      el: '#app',
-      data: {myItem: 'pen'}
-    })
-    // new Vue({
-    //   el:"#fruits-list",
-    //   components: {
-    //     'fruits-list-title':{
-    //       template: '<h1>fruits-list2</h1>'
-    //     }
-    //   }
-    // })
-    // Vue.component('fruits-list',{
-    //   template: 
-    //   `
-    //   <div>
-    //     <p><fruits-list-title></fruits-list-title></p>
-    //     <p><fruits-list-description></fruits-list-description></p>
-    //     <p><fruits-list-table></fruits-list-table></p>
-    //   </div>
-      
-    //   `
-    // })
-    // Vue.component('fruits-list-title',{
-    //   template:'<h1>fruits list</h1>'
-    // })
-    // Vue.component('fruits-list-description',{
-    //   template:'<p>list of major fruits list</p>'
-    // })
-    // Vue.component('fruits-list-table',{
-    //   template: `
-    //   <table>
-    //     <tr>
-    //       <th>season</th>
-    //       <th>fruits</th>
-    //     </tr>
-    //     <tr>
-    //       <td>spring</td>
-    //       <td>strawberry</td>
-    //     </tr>
-    //     <tr>
-    //       <td>summer</td>
-    //       <td>waterMelon</td>
-    //     </tr>
-    //     <tr>
-    //       <td>autumn</td>
-    //       <td>grape</td>
-    //     </tr>
-    //     <tr>
-    //       <td>winter</td>
-    //       <td>orange</td>
-    //     </tr>
-    //   </table>
-    //   `
-    // })
-    new Vue({
-      el: "#main",
+      el: '#fruits-counter',
+      components:{
+        'counter-button': counterButton
+      },
+      data: {
+        total:0,
+        fruits:[
+          {name:'nasi'},
+          {name:'itigo'},
+        ]
+      },
+      methods: {
+        incrementCartStatus: function(){
+          this.total += 1
+        }
+      }
     })
   </script>
-  <!-- <script src="app.js"></script> -->
 </body>
 
 </html>
